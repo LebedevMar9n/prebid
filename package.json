@@ -1,0 +1,23 @@
+{
+  "name": "prebid",
+  "version": "1.0.0",
+  "description": "",
+  "main": "prebid.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LebedevMar9n/prebid.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LebedevMar9n/prebid/issues"
+  },
+  "homepage": "https://github.com/LebedevMar9n/prebid#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2"
+  }
+}

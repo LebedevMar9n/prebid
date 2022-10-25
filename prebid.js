@@ -1,3 +1,5 @@
+// Insert this code AFTER page load!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
 let btn = document.createElement("button");
 btn.innerHTML = "Show table";
 btn.type = "submit";
@@ -111,18 +113,28 @@ function initAdserver() {
     });
 }
 
-// =====monkey patching======
+// Insert this code BEFORE page load!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-// const { fetch: originalFetch } = window;
-// window.fetch = async (...args) => {
-//     let [resource, config] = args;
+const { fetch: originalFetch } = window;
+window.fetch = async (...args) => {
+    let [resource, config] = args;
 
-//     // request interceptor starts
-//     console.log("resource", resource);
-//     // request interceptor ends
-//     await originalFetch(resource, config);
-//     const response = await originalFetch(resource, config);
+    // request interceptor starts
+    console.log("resource", resource)
 
-//     // response interceptor here
-//     return response;
-// };
+    let xhr = new XMLHttpRequest();
+    xhr.open('POST', 'http://localhost:4000/');
+    let json = JSON.stringify({
+        resource
+    });
+    xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+
+    xhr.send(json);
+
+    // request interceptor ends
+    await originalFetch(resource, config);
+    const response = await originalFetch(resource, config);
+
+    // response interceptor here
+    return response;
+};
