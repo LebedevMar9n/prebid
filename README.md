@@ -24,4 +24,4 @@ _To build app you need to do the following._
    ```sh
    node index.js
    ```
-3. Very important to insert client script in right order (Where are some tips in comment section).
+3. Very important to insert client script in right order (Where are some tips in comment section on Prebid.js).
